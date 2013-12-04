@@ -5,7 +5,7 @@ describe Cell do
     let (:cell) {Cell.new}
 
     it "should be empty by default" do
-    	expect(cell).to be_empty
+    	expect(cell).not_to be_filled_out
     end
 
     it "should have a value" do
@@ -15,17 +15,17 @@ describe Cell do
 
    	it "should not be empty if it has a value" do
    		cell.value = 4
-   		expect(cell).not_to be_empty
+   		expect(cell).to be_filled_out
    	end
 
    	it "should know it's possible values given all but one" do 
-   		expect(cell).to be_empty
+   		expect(cell).not_to be_filled_out
    		neighbours = [1,2,3,4,5,7,8,9]
    		expect(cell.possible_values(neighbours)).to eq [6]
  		end
 
  		it "should know it's possible values given all but two" do 
- 			expect(cell).to be_empty
+ 			expect(cell).not_to be_filled_out
  			neighbours = [1,2,3,4,6,7,8]
  			expect(cell.possible_values(neighbours)).to eq [5,9]
  		end

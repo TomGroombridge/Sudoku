@@ -3,12 +3,12 @@ class Cell
 	attr_accessor :value
  		
  	def initialize
- 		@value = nil
+ 		@value = 0
  	end
 
-  	def empty?
-		@value.nil?	
-	end
+  	def filled_out?
+  		@value != 0
+  	end
 
 	def possible_values(neighbours)
 		(1..9).to_a - neighbours 
