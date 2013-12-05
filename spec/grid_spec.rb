@@ -4,9 +4,11 @@ require_relative "../lib/cell.rb"
 describe Grid do 
 
 	context "initialization" do 
-		let (:puzzle) {'git 015003002000100906270068430490002017501040380003905000900081040860070025037204600'} #easy puzzle row by row
+		let (:puzzle) {'015003002000100906270068430490002017501040380003905000900081040860070025037204600'} #easy puzzle row by row
 
 		let (:grid) {Grid.new(puzzle)}
+
+
 		
 				#creates a new grid with the puzzle inside it by default
 
@@ -40,6 +42,25 @@ describe Grid do
 		it "should know which column my cell is in" do 
 			expect(grid.which_column(40)).to eq 4	
 			end		
+
+		it "should know which box a cell in in" do 
+			expect(grid.which_box(27)).to eq 3
+			end		
+
+		it "should know which box row a box is in" do
+			expect(grid.which_box_row(34)).to eq 1	
+			end
+
+		it "should know which collumn box a box is in"do
+			expect(grid.which_box_collumn(41)). to eq 1
+			end 			
+
+
+		it "should expect the first box to hold the first 3 elements of the first 3 rows." do
+			expect(grid.first_box_values).to eq [0,1,5,0,0,0,2,7,0]
+		end
+
+			
 
 
 
