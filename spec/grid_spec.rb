@@ -57,8 +57,43 @@ describe Grid do
 
 
 		it "should expect the first box to hold the first 3 elements of the first 3 rows." do
-			expect(grid.first_box_values).to eq [0,1,5,0,0,0,2,7,0]
+			expect(grid.first_box).to eq [0,1,5,0,0,0,2,7,0]
 		end
+
+		it "should expect the second box to hold 4,5,6th elements of the first 3 rows" do
+			expect(grid.second_box).to eq [0,0,3,1,0,0,0,6,8]
+		end
+
+		it "should expect to know the values of the forth box" do
+			expect(grid.forth_box).to eq [4,9,0,5,0,1,0,0,3]
+		end
+
+		it "should have all of its boxes" do
+			expect(grid.box_indexes.first).to eq [0,1,2,9,10,11,18,19,20]
+		end
+
+		it "should return the values of a cell with indexes" do 
+			indexes_for_box_four = grid.box_indexes[3]
+			expect(grid.values(indexes_for_box_four)).to eq [4,9,0,5,0,1,0,0,3]
+		end
+
+		it "should be able to get all of the incomplete values" do
+			p grid.incomplete_values
+			expect(grid.incomplete_values.count).to eq 41
+		end
+
+		it "should get all neighbours for a cell" do
+			expect(grid.neighbours(0)).to eq [0,1,2,3,4,5,6,7,8,9,18,27,36,45,54,63,72,10,11,19,20]
+		end
+		
+		it "should return all the vales of the neigbours of a broken box" do  
+			expect(grid.neighbour_values(grid.incomplete_values.first)).to eq [0,1,2,3,4,5,7,8,9]
+		end
+
+		it "should return the missin values" do 
+			expect(grid.missing_values(grid.incomplete_values.first)).to eq [6]
+		end
+
 
 			
 

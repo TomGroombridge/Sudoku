@@ -10,6 +10,10 @@ class Cell
   		@value != 0
   	end
 
+  	def self.solved?
+  		self != 0
+  	end
+
 	def possible_values(neighbours)
 		(1..9).to_a - neighbours 
 	end
